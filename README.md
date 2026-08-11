@@ -1,142 +1,179 @@
 <div align="center">
 
-<img src="https://media.discordapp.net/attachments/1498241659878768670/1536824710937968771/content.png?ex=6a7ccf0b&is=6a7b7d8b&hm=905a6647aab3e568d077055585f6e057f6ccff952e101a4eb8a6906327e7f3d3&=&format=webp&quality=lossless" alt="Discord API Banner" width="800" style="max-width:100%;height:auto;">
+<img src="https://media.discordapp.net/attachments/1498241659878768670/1536824710937968771/content.png?ex=6a7ccf0b&is=6a7b7d8b&hm=905a6647aab3e568d077055585f6e057f6ccff952e101a4eb8a6906327e7f3d3&=&format=webp&quality=lossless" alt="Discord API Banner" width="800">
 
-Discord API Collection
+# Discord API Reference
 
-A clean, organized reference for Discord APIs, endpoints, documentation, and useful resources.
+### A clean, stylish and organized Discord API reference for developers.
+
+<p>
+  <strong>REST API</strong> •
+  <strong>Gateway</strong> •
+  <strong>Interactions</strong> •
+  <strong>OAuth2</strong> •
+  <strong>Webhooks</strong>
+</p>
 
 </div>
 
-✦ About
+---
 
-This repository is a clean reference hub for working with the Discord API.
+## ✦ Overview
 
-It organizes official API resources, explains the main systems, and provides a quick starting point for developers building Discord bots, applications, integrations, and automation.
+This repository is a compact reference for developers working with the **Discord API**.
 
-Simple • Clean • Organized • Developer Friendly
+Everything is separated into simple files so you can quickly find official documentation, understand the basics, or use the full reference.
 
-📚 What's Inside
+---
 
-File
+## 📁 Files
 
-Description
+| File | Purpose |
+|:---:|---|
+| `api.md` | Official Discord API links |
+| `shortexplaining.md` | Short explanation of how the API works |
+| `readme.md` | Full overview and reference |
 
-api.md
+---
 
-Direct Discord API links
+## ⚡ Discord API
 
-shortexplaining.md
+The Discord API is the communication layer between your application and Discord.
 
-Short explanation of how the API works
+```text
+                    YOUR APPLICATION
+                           │
+              ┌────────────┴────────────┐
+              │                         │
+              ▼                         ▼
+          REST API                  Gateway
+              │                         │
+              ▼                         ▼
+       Requests / Actions          Live Events
+              │                         │
+              └────────────┬────────────┘
+                           ▼
+                         DISCORD
+```
 
-readme.md
+---
 
-Full API overview and developer guide
+## 🌐 REST API
 
-🔗 Main API Systems
+The REST API uses HTTP requests to work with Discord resources.
 
-🌐 REST API
+Common resources include:
 
-Used to request, create, update, and delete Discord resources.
+- Guilds
+- Channels
+- Messages
+- Users
+- Members
+- Roles
+- Webhooks
+- Applications
+
+Typical methods:
+
+```http
+GET
+POST
+PATCH
+PUT
+DELETE
+```
+
+---
+
+## 📡 Gateway
+
+The Gateway provides a persistent connection between your application and Discord.
+
+It is mainly used for real-time events such as:
+
+- Messages
+- Guild events
+- Member updates
+- Presence updates
+- Interactions
+- Voice-related events
+
+```text
+Discord
+   │
+   │ real-time event
+   ▼
+Gateway Connection
+   │
+   ▼
+Your Application
+```
+
+---
+
+## ⚡ Interactions
+
+Discord Interactions are used for modern application features.
+
+### Slash Commands
+
+```text
+/ban
+/help
+/ping
+```
+
+### Components
+
+- Buttons
+- Select menus
+- Modals
+- Autocomplete
+- Context menus
+
+Interactions make Discord applications feel fast and interactive.
+
+---
+
+## 🔔 Webhooks
+
+Webhooks are useful for sending automated messages into Discord.
+
+Common uses:
+
+```text
+Website → Discord
+GitHub  → Discord
+Logs    → Discord
+Alerts  → Discord
+Apps    → Discord
+```
+
+They can send normal messages and rich embeds without requiring a traditional bot command.
+
+---
+
+## 🔐 Authentication
+
+Discord applications can authenticate through bot authorization or OAuth2.
+
+Example bot authorization format:
+
+```http
+Authorization: Bot YOUR_BOT_TOKEN
+```
+
+**Never put a real token inside source code or publish it on GitHub.**
+
+---
+
+## 🛡️ Permissions
+
+Discord permissions control what an application can do inside a server.
 
 Examples:
 
-Messages
-
-Channels
-
-Guilds
-
-Users
-
-Roles
-
-Webhooks
-
-📡 Gateway
-
-Provides a persistent connection for receiving real-time Discord events.
-
-Examples:
-
-Messages
-
-Member events
-
-Presence updates
-
-Guild events
-
-Interactions
-
-⚡ Interactions
-
-Used for modern Discord features:
-
-Slash commands
-
-Buttons
-
-Select menus
-
-Modals
-
-Context menus
-
-Autocomplete
-
-🔔 Webhooks
-
-Useful for sending automated messages, embeds, notifications, logs, and external service events to Discord.
-
-🔐 OAuth2
-
-Allows users to authorize applications and provides authentication flows for Discord integrations.
-
-🧩 How It Works
-
-                 YOUR APPLICATION
-                        │
-                        ▼
-                 ┌──────────────┐
-                 │ Discord API  │
-                 └──────┬───────┘
-                        │
-              ┌─────────┴─────────┐
-              ▼                   ▼
-          REST API             Gateway
-              │                   │
-              ▼                   ▼
-        API Requests        Real-time Events
-              │                   │
-              └─────────┬─────────┘
-                        ▼
-                 Your Application
-
-Your application can use the REST API for actions and the Gateway for real-time events.
-
-🔐 Authentication
-
-Discord applications commonly use bot authentication or OAuth2.
-
-Example bot authorization header:
-
-Authorization: Bot YOUR_BOT_TOKEN
-
-Example request:
-
-GET https://discord.com/api/v10/users/@me
-Authorization: Bot YOUR_BOT_TOKEN
-
-⚠️ Never publish bot tokens, client secrets, access tokens, or private webhook URLs.
-
-🛡️ Permissions
-
-Discord uses permissions to control what applications can access and modify.
-
-Common permissions include:
-
+```text
 VIEW_CHANNEL
 SEND_MESSAGES
 MANAGE_MESSAGES
@@ -145,86 +182,79 @@ MANAGE_ROLES
 KICK_MEMBERS
 BAN_MEMBERS
 ADMINISTRATOR
+```
 
-Only request the permissions your application actually needs.
+Only request permissions your application actually needs.
 
-⏱️ Rate Limits
+---
 
-Discord protects its API with rate limits.
+## ⏱️ Rate Limits
 
-Your application should:
+Discord uses rate limits to protect the API.
 
-Handle 429 responses.
+A good application should:
 
-Respect Discord's rate-limit information.
+- Respect `429` responses
+- Follow Discord's rate-limit headers
+- Avoid unnecessary requests
+- Cache data when appropriate
+- Prefer Gateway events for real-time updates
 
-Avoid unnecessary requests.
+---
 
-Cache data where appropriate.
+## 🔒 Security
 
-Use Gateway events when real-time updates are needed.
+**Never commit secrets to GitHub.**
 
-🚀 Common Projects
+Recommended:
 
-This API reference can be useful for building:
+```env
+DISCORD_TOKEN=your_token
+CLIENT_SECRET=your_secret
+```
 
-🤖 Discord bots
+And add sensitive files to `.gitignore`:
 
-🌐 Discord dashboards
-
-⚡ Slash-command systems
-
-🔔 Webhook systems
-
-🔐 OAuth2 applications
-
-🛠️ Server management tools
-
-📊 Logging systems
-
-🔗 External integrations
-
-🧪 API testing tools
-
-🗂️ Repository Structure
-
-.
-├── api.md
-├── shortexplaining.md
-└── readme.md
-
-api.mdDirect Discord API documentation links.
-
-shortexplaining.mdA short explanation of the Discord API and its basic workflow.
-
-readme.mdThe complete overview, architecture, security notes, and developer reference.
-
-📖 Official Documentation
-
-The complete official documentation is available through the Discord Developer Portal.
-
-See api.md for the direct links to Discord's official resources.
-
-⚠️ Security
-
-Never commit secrets to GitHub.
-
-Use environment variables instead:
-
-DISCORD_TOKEN=your_private_token
-CLIENT_SECRET=your_private_secret
-
-Add sensitive files to .gitignore:
-
+```gitignore
 .env
 .env.*
 secrets.json
 config.local.json
+```
+
+If a secret is exposed, revoke or rotate it immediately.
+
+---
+
+## 🧩 What Can You Build?
+
+With Discord's API, developers can create:
+
+```text
+🤖 Bots
+🌐 Dashboards
+⚡ Slash Commands
+🔔 Webhook Systems
+🔐 OAuth2 Applications
+📊 Logging Systems
+🛠️ Server Management
+🔗 External Integrations
+```
+
+---
+
+## 📚 Documentation
+
+For the official resources, open **`api.md`**.
+
+For a quick explanation, open **`shortexplaining.md`**.
+
+---
 
 <div align="center">
 
-Discord API Reference
+### Discord API Reference
 
-Built for developers. Designed to stay simple.
+**Clean documentation. Simple structure. Developer focused.**
 
 </div>
